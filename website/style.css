@@ -8,12 +8,19 @@ body{
     grid-auto-rows: minmax(150px, auto);
     /* grid-template-columns:  */
     height:100vh;
-    background: #f23557;
+    /* background: #f23557; */
     color: #f0d43a;
     justify-content: center;
     grid-gap: 1em;
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
+    background: #bdc3c7;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2c3e50, #bdc3c7);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 .holder{
@@ -67,13 +74,20 @@ input{
 button{
     width: 400px;
     height: 100px;
-    background: #3b4a6b;
+    background: #3b4a6baa;
     color: #f0d43a;
     font-size: 26px;
     font-family: 'Oswald', sans-serif;
     border: none;
-    box-shadow: 2px 4px 5px #444;
+    box-shadow: 2px 4px 5px #444;    
 }
+
+button:hover {
+    cursor: pointer;
+    background: #3b4a6b;
+    transition: all 1s ease;
+}
+
 h1{
     font-size: 36px;
 }

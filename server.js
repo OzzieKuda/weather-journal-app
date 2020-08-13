@@ -2,7 +2,8 @@
 projectData = {};
 
 // Require Express to run server and routes
-const express = require('express');
+const express = require('express'),
+ bodyParser = require("body-parser");
 
 // Start up an instance of app
 const app = express();

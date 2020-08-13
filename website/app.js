@@ -14,8 +14,6 @@ let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 // functions
 
-const logFeeling = () => {};
-
 const updateLog = () => {
     date.innerHTML = newDate;
     temp.innerHTML = zip.value;
@@ -34,5 +32,10 @@ button.addEventListener('click', () => {
 const baseUrl = 'http://api.openweathermap.org/data/',
  apiKey = '&appid=f245a8ab742aa26adb273a9c50af5426',
  format = '6&units=metric';
+
+/**
+ * api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid={your api key}
+ * api.openweathermap.org/data/2.5/weather?zip=8853,ch&appid=f245a8ab742aa26adb273a9c50af5426&units=metric
+ */
 
 //  http://api.openweathermap.org/data/2.5/weather?q=zurich&appid=f245a8ab742aa26adb273a9c50af5426&units=metric

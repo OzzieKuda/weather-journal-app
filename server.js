@@ -45,12 +45,17 @@ app.get('/get-weather/', async (req, res) => {
     'method': 'GET'
   };
 
-  const response = await fetch(apiUrl, options)
-    .then(res => res.json())
-    .catch(err => console.log('error: ', err));
+  const response = await fetch(apiUrl, options);
   
-  console.log('RESPONSE: ', response);
-  res.json(response);
+  try {
+    const data = await response.json();
+    res.json(data);
+  } 
+  
+  catch(error) {
+    console.log('error: ', error);
+  }
+
 });
 
 

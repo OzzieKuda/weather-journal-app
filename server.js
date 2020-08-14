@@ -49,7 +49,18 @@ app.get('/get-weather/', async (req, res) => {
   
   try {
     const data = await response.json();
-    res.json(data);
+    const location = data.name;
+    const temp = data.main.temp;
+    const weather = data.weather[0].description;
+    // projectData.location = location;
+    // projectData.temp = temp;
+    // projectData.weather = weather;
+    projectData = {
+      location,
+      temp,
+      weather
+    }
+    res.json(projectData);
   } 
   
   catch(error) {

@@ -5,6 +5,11 @@ projectData = {};
 const express = require('express'),
  bodyParser = require("body-parser");
 
+// require further modules
+
+ const fetch = require('node-fetch'),
+  fs = require('fs');
+
 // Start up an instance of app
 const app = express();
 
@@ -19,19 +24,29 @@ app.use(bodyParser.json());
 app.use(express.static('website'));
 
 
-// Setup Server
+// get api key into a variable
 
-app.get('/', (req, res) => {
-    res.send('good afternoon ladies and gentlemen.')
-});
+const apiKey = fs.readFileSync(`${__dirname}/api-key.txt`);
+
+const exampleZip = 8853;
+
+// Setup Server
 
 app.listen(8000, () => {
   console.log("Listening to requests on port 8000 ...");
 });
 
+app.get('/get-weather/', async (req, res) => {
+  console.log('get-weather endpoint called');
+  const apiUrl = `http://api.openweathermap.org/data/2.5/weather?zip=${exampleZip},ch&appid=${apiKey}&units=metric`;
+  const options = {
+    'method': 'GET'
+  };
 
-/**
- * example:
- * http: //api.openweathermap.org/data/2.5/weather?q=zurich&appid=f245a8ab742aa26adb273a9c50af5426&units=metric
- * 
- */
+  const response = await fetch(apiUrl, options)
+    .then(res => res.json())
+    .catch(err => console.log('error: ', err));
+  
+  console.log('RESPONSE: ', response);
+  res.json(response);
+});

@@ -1,4 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
+// TODO: add data into projectData object
 projectData = {};
 
 // Require Express to run server and routes
@@ -28,6 +29,7 @@ app.use(express.static('website'));
 
 const apiKey = fs.readFileSync(`${__dirname}/api-key.txt`);
 
+// TODO: get zip code with a get post
 const exampleZip = 8853;
 
 // Setup Server
@@ -50,3 +52,18 @@ app.get('/get-weather/', async (req, res) => {
   console.log('RESPONSE: ', response);
   res.json(response);
 });
+
+
+/*
+
+const weatherUrl = baseUrl + zipParameter + apiKey + format;
+
+const finalUrl =
+  "api.openweathermap.org/data/2.5/weather?zip=8853,ch&appid=f245a8ab742aa26adb273a9c50af5426&units=metric";
+
+const baseUrl = "http://api.openweathermap.org/data/2.5/weather",
+  zipParameter = "?zip=" + toString(zipcode),
+  apiKey = "&appid=f245a8ab742aa26adb273a9c50af5426",
+  format = "6&units=metric";
+
+  */

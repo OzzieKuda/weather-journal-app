@@ -22,10 +22,7 @@ app.use(cors());
 app.use(express.static('website'));
 
 // Setup Server
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 8000;
-}
+const port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log("Listening to requests on port 8000 ...");
 });

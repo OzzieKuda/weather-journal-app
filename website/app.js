@@ -5,7 +5,8 @@ const button = document.getElementById('generate'),
  zip = document.getElementById('zip'),
  date = document.querySelector("#date"),
  temp = document.querySelector("#temp"),
- content = document.querySelector("#content");
+ content = document.querySelector("#content"),
+ entry = document.querySelector(".entry");
 
  let zipcode;
 
@@ -14,6 +15,10 @@ let d = new Date();
 let newDate = `${d.getDate()}.${d.getMonth()}.${d.getFullYear()}`;
 
 // functions
+
+// toggle entry visibility
+
+
 
 // update UI
 
@@ -46,6 +51,7 @@ button.addEventListener('click', async () => {
   });
   updateUI('/weather');
   resetLog();
+  entry.classList.remove("hidden");
 });
 
 // API Weather Map

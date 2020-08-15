@@ -49,30 +49,3 @@ const getWeather = async (zipcode) => {
     console.log("error", error);
   }
 };
-
-//////////////////////////
-
-// send zip to /zip-code
-// TODO: Send zip-code to backend
-const transferZip = async (zip) => {
-    await fetch('/zip-code');
-};
-
-const postData = async (url = "", data = {}) => {
-  const response = await fetch(url, {
-    method: "POST",
-    credentials: "same-origin",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-
-  try {
-    const newData = await response.json();
-    return newData;
-  } catch (error) {
-    console.log("error", error);
-    // appropriately handle the error
-  }
-};

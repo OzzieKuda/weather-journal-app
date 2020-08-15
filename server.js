@@ -28,9 +28,6 @@ app.use(express.static('website'));
 // get api key into a variable
 const apiKey = fs.readFileSync(`${__dirname}/api-key.txt`);
 
-// TODO: get zip code with a get post
-const exampleZip = 8853;
-
 // Setup Server
 app.listen(8000, () => {
   console.log("Listening to requests on port 8000 ...");
@@ -59,64 +56,3 @@ app.post('/weather', (req, res) => {
 app.get('/weather', (req, res) => {
   res.send(projectData);
 })
-
-/*
-
-app.get('/get-weather/', async (req, res) => {
-  console.log('get-weather endpoint called');
-  const apiUrl = `http://api.openweathermap.org/data/2.5/weather?zip=${exampleZip},ch&appid=${apiKey}&units=metric`;
-  const options = {
-    'method': 'GET'
-  };
-
-  const response = await fetch(apiUrl, options);
-  
-  try {
-    const data = await response.json();
-    const location = data.name;
-    const temp = data.main.temp;
-    const weather = data.weather[0].description;
-    projectData = {
-      location,
-      temp,
-      weather
-    }
-    res.json(projectData);
-  } 
-  
-  catch(error) {
-    console.log('error: ', error);
-  }
-
-});
-
-*/
-
-// post routes / endpoints
-// TODO: Get data from client
-
-/*
-
-app.post('/zip-code/', (req, res) => {
-  console.log(req);
-  res.end('yes');
-});
-
-*/
-
-/*
-
-const weatherUrl = baseUrl + zipParameter + apiKey + format;
-
-Request URL: http: //api.openweathermap.org/data/2.5/weather8853,ch&appid=f245a8ab742aa26adb273a9c50af54266&units=metric
-
-
-const finalUrl =
-  "api.openweathermap.org/data/2.5/weather?zip=8853,ch&appid=f245a8ab742aa26adb273a9c50af5426&units=metric";
-
-const baseUrl = "http://api.openweathermap.org/data/2.5/weather",
-  zipParameter = "?zip=" + toString(zipcode),
-  apiKey = "&appid=f245a8ab742aa26adb273a9c50af5426",
-  format = "6&units=metric";
-
-  */

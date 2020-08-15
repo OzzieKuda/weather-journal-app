@@ -67,7 +67,7 @@ button.addEventListener('click', async () => {
 const getWeather = async (zipcode) => {
   zipcode = zip.value;
   countrycode = country.value;
-   const baseURL = "http://api.openweathermap.org/data/2.5/weather",
+   const baseURL = "https://api.openweathermap.org/data/2.5/weather",
      zipParameter = "?zip=" + zipcode + "," + countrycode,
      apiKey = "&appid=f245a8ab742aa26adb273a9c50af5426",
      format = "&units=metric";

@@ -29,7 +29,6 @@ app.listen(8000, () => {
 // post route
 
 app.post('/weather', (req, res) => {
-  console.log(req.body)
   const {
     date,
     temperature,
@@ -39,7 +38,8 @@ app.post('/weather', (req, res) => {
   projectData.date = date;
   projectData.temperature = temperature;
   projectData.feelings = feelings;
-  console.log(projectData)
+  console.log('data received from client:')
+  console.log(req.body)
   res.send({
     success: true
   }) // sending a success message

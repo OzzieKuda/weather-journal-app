@@ -2,13 +2,14 @@
 
 const button = document.getElementById('generate'),
  feelings = document.getElementById('feelings'),
+ country = document.getElementById('country'),
  zip = document.getElementById('zip'),
  date = document.querySelector("#date"),
  temp = document.querySelector("#temp"),
  content = document.querySelector("#content"),
  entry = document.querySelector(".entry");
 
- let zipcode;
+ let zipcode, countrycode;
 
 // Create a new date instance dynamically with JS
 let d = new Date();
@@ -29,6 +30,12 @@ const updateUI = async (url = '') => {
     date.innerHTML = `Date: ${projectData.date}`;
     temp.innerHTML = `Weather: ${projectData.temperature}`;
     content.innerHTML = `Feelings: ${projectData.feelings}`;
+    console.log('UI updated!')
+    console.log(
+      `Date: ${projectData.date}`,
+      `Weather: ${projectData.temperature}`,
+      `Feelings: ${projectData.feelings}`
+    )
   } catch (error) {
     console.log(error);
   }
@@ -37,6 +44,7 @@ const updateUI = async (url = '') => {
 // reset log
 
 const resetLog = () => {
+  country.value = '';
   zip.value = '';
   feelings.value = '';
 };
@@ -58,15 +66,16 @@ button.addEventListener('click', async () => {
 
 const getWeather = async (zipcode) => {
   zipcode = zip.value;
+  countrycode = country.value;
    const baseURL = "http://api.openweathermap.org/data/2.5/weather",
-     zipParameter = "?zip=" + zipcode + ",ch",
+     zipParameter = "?zip=" + zipcode + "," + countrycode,
      apiKey = "&appid=f245a8ab742aa26adb273a9c50af5426",
      format = "&units=metric";
   const apiURL = baseURL + zipParameter + apiKey + format;
   const res = await fetch(apiURL);
   try {
     const userData = await res.json();
-    return userData.main.temp + "C, " + userData.weather[0].description;
+    return `${userData.main.temp}°C, ${userData.weather[0].description}, ${userData.name}`;
   } catch (error) {
     console.log("error", error);
     console.log('invalid zip code')

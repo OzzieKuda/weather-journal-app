@@ -9,6 +9,13 @@ const button = document.getElementById('generate'),
 
  let zipcode;
 
+ zipcode = 8853;
+
+ const baseURL = "http://api.openweathermap.org/data/2.5/weather",
+   zipParameter = "?zip=" + zipcode + ',ch',
+   apiKey = "&appid=f245a8ab742aa26adb273a9c50af5426",
+   format = "&units=metric";
+
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
@@ -29,13 +36,19 @@ button.addEventListener('click', () => {
 });
 
 // API Weather Map
-const getWeather = async () => {
-    const apiUrl = '/get-weather';
-    const response = await fetch(apiUrl);
-    const json = await response.json();
-    console.log(json);
-};
 
+const getWeather = async (zipcode) => {
+  zipcode = zipcode;
+  const apiURL = baseURL + zipParameter + apiKey + format;
+  const res = await fetch(apiURL);
+  try {
+    const userData = await res.json();
+    console.log(userData);
+    return userData.main.temp;
+  } catch (error) {
+    console.log("error", error);
+  }
+};
 
 //////////////////////////
 

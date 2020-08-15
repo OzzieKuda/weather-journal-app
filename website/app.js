@@ -1,5 +1,4 @@
 /* Global Variables */
-
 const button = document.getElementById('generate'),
  feelings = document.getElementById('feelings'),
  country = document.getElementById('country'),
@@ -17,12 +16,7 @@ let newDate = `${d.getDate()}.${d.getMonth()}.${d.getFullYear()}`;
 
 // functions
 
-// toggle entry visibility
-
-
-
 // update UI
-
 const updateUI = async (url = '') => {
   const res = await fetch(url);
   try {
@@ -42,7 +36,6 @@ const updateUI = async (url = '') => {
 }
 
 // reset log
-
 const resetLog = () => {
   country.value = '';
   zip.value = '';
@@ -50,7 +43,6 @@ const resetLog = () => {
 };
 
 // event listener
-
 button.addEventListener('click', async () => {
   await postData("/weather", {
     date: newDate,
@@ -63,7 +55,6 @@ button.addEventListener('click', async () => {
 });
 
 // API Weather Map
-
 const getWeather = async (zipcode) => {
   zipcode = zip.value;
   countrycode = country.value;

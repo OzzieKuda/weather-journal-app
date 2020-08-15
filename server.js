@@ -5,10 +5,6 @@ projectData = {};
 const express = require('express'),
  bodyParser = require("body-parser");
 
-// require further modules
- const fetch = require('node-fetch'),
-  fs = require('fs');
-
 // Start up an instance of app
 const app = express();
 
@@ -25,9 +21,6 @@ app.use(cors());
 // Initialize the main project folder
 app.use(express.static('website'));
 
-// get api key into a variable
-const apiKey = fs.readFileSync(`${__dirname}/api-key.txt`);
-
 // Setup Server
 app.listen(8000, () => {
   console.log("Listening to requests on port 8000 ...");
@@ -36,6 +29,7 @@ app.listen(8000, () => {
 // post route
 
 app.post('/weather', (req, res) => {
+  console.log(req.body)
   const {
     date,
     temperature,

@@ -3,27 +3,26 @@
 }
 
 body{
+    margin: 1em;
     background: #fffff8;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-#app{
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    align-content: center;
-    justify-content: space-evenly;
-    width: 100vw;
-    height:100vh;
-    color: #f0d43a;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
     background: #bdc3c7;
     /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
     /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #2c3e50, #bdc3c7);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#app {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    align-content: center;
+    justify-content: space-evenly;
+    color: #f0d43a;
+    font-size: 20px;
+    font-family: 'Oswald', sans-serif;
 }
 
 .city {
@@ -89,6 +88,14 @@ button:hover {
 
 h1 {
     font-size: 36px;
+}
+
+.info p {
+    color: #fff;
+}
+
+.caption {
+    font-size: smaller;
 }
 
 textarea {

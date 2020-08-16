@@ -43,7 +43,7 @@ body{
 .entry {
     background: rgba(59, 74, 107, .4);
     width: 100%;
-    transition: all 1s ease;
+    transition: all 1s ease-in-out;
 }
 
 .hidden {
